@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="./assets/img/4geeks.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
+    <title>Jose Luis Vela Card Generator</title>
 
     <!-- Fontawesome is our recomended library for icons -->
     <link
@@ -14,18 +14,23 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body class="bg-success d-flex justify-content-center">
     <!-- Write your HTML code here, you can delete everything withing the body tags -->
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./assets/img/rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
+    <div class="row text-center bg-white m-5 rounded-3 shadow w-25">
+      <div class="row ms-0 mt-1">
+        <div class="col-3" id="topSuit">
+
+        </div>
+      </div>
+      <div class="row m-0">
+        <div class="col fw-bold fst-italic display-1" id="cardNumber">
+
+        </div>
+      </div>
+      <div class="row m-0 mb-1">
+        <div class="col fa-flip-vertical text-end" id="bottomSuit">
+
+        </div>
       </div>
     </div>
 
