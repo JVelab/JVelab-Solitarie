@@ -14,10 +14,16 @@
       crossorigin="anonymous"
     />
   </head>
-  <body class="bg-success">
+  <body class="bg-success text-center">
     <!-- Write your HTML code here, you can delete everything withing the body tags -->
-     <button class="button fs-5 m-auto" id="nuevaCarta" onclick="generateCard()">Generar nueva carta</button>
-    <div class="row text-center bg-white m-5 rounded-3 shadow card m-auto">
+    <button class="btn btn-secondary border fs-6 my-2 align-self-center" id="nuevaCarta">Generar nueva carta</button>
+     <div class="row fs-6 w-25 mx-auto mb-4">
+       <label for="width">Introduce el ancho</label>
+       <input type="number" id="width" placeholder="Ancho de la carta">
+       <label for="heigth">Introduce el Alto</label>
+       <input type="number" id="heigth" placeholder="Alto de la carta">
+    </div>
+    <div class="row text-center bg-white my-2 rounded-3 shadow card m-auto">
         <div class="col-3 ms-0 mt-1 align-self-start h-25" id="topSuit">
 
         </div>

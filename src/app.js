@@ -31,3 +31,14 @@ function generateCard() {
 function getRandomNumber(array) {
   return array[Math.floor(Math.random() * array.length)]
 }
+document.getElementById("nuevaCarta").addEventListener("click", generateCard)
+setInterval(generateCard, 10000)
+
+document.getElementById("width").addEventListener("input", resizeCard)
+document.getElementById("heigth").addEventListener("input", resizeCard)
+
+function resizeCard() {
+  const cardStyle = document.querySelector(".card").style
+  cardStyle.width = document.getElementById("width").value + "px"
+  cardStyle.height = document.getElementById("heigth").value + "px"
+}
