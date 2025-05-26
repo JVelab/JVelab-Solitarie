@@ -10,3 +10,9 @@ body{
     min-width: 200px;
     min-height: 300px;
 }
+
+.card-border {
+    height: 300px;
+    width: 200px;
+    border: 2px solid lightblue;
+}

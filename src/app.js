@@ -31,14 +31,23 @@ function generateCard() {
 function getRandomNumber(array) {
   return array[Math.floor(Math.random() * array.length)]
 }
-document.getElementById("nuevaCarta").addEventListener("click", generateCard)
-setInterval(generateCard, 10000)
 
-document.getElementById("width").addEventListener("input", resizeCard)
-document.getElementById("heigth").addEventListener("input", resizeCard)
+const actualCard = document.querySelector(".card")
+const dropZoneClubs = document.getElementById("dropClubs")
+const dropZoneSpades = document.getElementById("dropSpades")
+const dropZoneDiamond = document.getElementById("dropDiamond")
+const dropZoneHearts = document.getElementById("dropHearts")
 
-function resizeCard() {
-  const cardStyle = document.querySelector(".card").style
-  cardStyle.width = document.getElementById("width").value + "px"
-  cardStyle.height = document.getElementById("heigth").value + "px"
-}
+// actualCard.addEventListener("dragstart", e => {
+//   console.log("dragstart")
+// })
+// actualCard.addEventListener("dragend", e => {
+//   console.log("drop")
+// })
+// actualCard.addEventListener("drag", e => {
+//   console.log("drag")
+// })
+
+dropZoneClubs.addEventListener("dragenter", e => {
+  console.log("entro")
+})
