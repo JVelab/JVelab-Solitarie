@@ -14,23 +14,19 @@
       crossorigin="anonymous"
     />
   </head>
-  <body class="bg-success d-flex justify-content-center">
+  <body class="bg-success">
     <!-- Write your HTML code here, you can delete everything withing the body tags -->
-    <div class="row text-center bg-white m-5 rounded-3 shadow w-25">
-      <div class="row ms-0 mt-1">
-        <div class="col-3" id="topSuit">
+     <button class="button fs-5 m-auto" id="nuevaCarta" onclick="generateCard()">Generar nueva carta</button>
+    <div class="row text-center bg-white m-5 rounded-3 shadow card m-auto">
+        <div class="col-3 ms-0 mt-1 align-self-start h-25" id="topSuit">
 
         </div>
+        <div class="col fw-bold fst-italic mx-0 my-3 align-self-center align-items-center d-flex justify-content-center" id="cardNumber">
       </div>
-      <div class="row mx-0 my-5">
-        <div class="col fw-bold fst-italic display-1" id="cardNumber">
 
-        </div>
-      </div>
-      <div class="row m-0 mb-1">
-        <div class="col fa-flip-vertical text-end" id="bottomSuit">
+        <div class="col fa-flip-vertical text-end m-0 mb-1 align-self-end h-25" id="bottomSuit">
 
-        </div>
+
       </div>
     </div>
 
