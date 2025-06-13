@@ -6,13 +6,23 @@ import "./assets/img/4geeks.ico";
 
 const suits = ["Treboles", "Diamantes", "Corazones", "Picas"]
 const numbers = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
-
 const maze = []
+const playZones = []
+
+const mazeZone = document.querySelector("#maze")
+
+const actualCard = document.querySelector(".card")
+const dropZoneClubs = document.getElementById("dropClubs")
+const dropZoneSpades = document.getElementById("dropSpades")
+const dropZoneDiamond = document.getElementById("dropDiamond")
+const dropZoneHearts = document.getElementById("dropHearts")
 
 function newGame() {
   createMaze()
   shuffleMaze()
   console.log(maze)
+  dealTheCards()
+  console.log(playZones)
 }
 
 window.onload = newGame()
@@ -50,11 +60,18 @@ function shuffleMaze() {
   return maze;
 }
 
-const actualCard = document.querySelector(".card")
-const dropZoneClubs = document.getElementById("dropClubs")
-const dropZoneSpades = document.getElementById("dropSpades")
-const dropZoneDiamond = document.getElementById("dropDiamond")
-const dropZoneHearts = document.getElementById("dropHearts")
+function dealTheCards() {
+  for(let i = 0; i < 7; i++) {
+    playZones.push([])
+    for(let j = 0; j < i + 1; j++) {
+      playZones[i].push(maze[0])
+    }
+  }
+}
+
+function placeCards() {
+  
+}
 
 // actualCard.addEventListener("dragstart", e => {
 //   console.log("dragstart")
