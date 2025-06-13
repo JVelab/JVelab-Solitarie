@@ -2,34 +2,52 @@ import "bootstrap";
 import "./style.css";
 
 
-import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = generateCard()
-  //write your code here
-function generateCard() {
-  
-  const suits = ["♣", "♦", "♥", "♠"]
-  const numbers = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
-  
-  let randomCardSuit = getRandomNumber(suits)
-  let randomCardNumber = getRandomNumber(numbers)
-  console.log(randomCardNumber, randomCardSuit)
-  
-  let topSuit = document.querySelector("#topSuit")
-  let bottomSuit = document.querySelector("#bottomSuit")
-  let cardNumber = document.querySelector("#cardNumber")
-  
-  if (randomCardSuit == "♦" || randomCardSuit == "♥") {
-    topSuit.className += " text-danger"
-    bottomSuit.className += " text-danger"
+const suits = ["Treboles", "Diamantes", "Corazones", "Picas"]
+const numbers = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
+
+const maze = []
+
+function newGame() {
+  createMaze()
+  shuffleMaze()
+  console.log(maze)
+}
+
+window.onload = newGame()
+
+function createMaze() {
+  for(let i = 0; i < numbers.length; i++) {
+    for(let j = 0; j < suits.length; j++) {
+      if (suits[j] == "Diamantes" || suits[j] == "Corazones") {
+        let card = {
+          number: i + 1,
+          suits: suits[j],
+          color: "rojo",
+          image: `${i + 1}_de_${suits[j]}`
+        }
+        maze.push(card)
+      }
+      else {
+        let card = {
+          number: i + 1,
+          suits: suits[j],
+          color: "negro",
+          image: `${i + 1}_de_${suits[j]}`
+        }
+        maze.push(card)
+      }
+    }
   }
-  topSuit.innerHTML = `<p>${randomCardSuit}</p>`
-  bottomSuit.innerHTML = `<p>${randomCardSuit}</p>`
-  cardNumber.innerHTML = `<p>${randomCardNumber}</p>`
-  };
-function getRandomNumber(array) {
-  return array[Math.floor(Math.random() * array.length)]
+}
+
+function shuffleMaze() {
+  for (let i = maze.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [maze[i], maze[j]] = [maze[j], maze[i]];
+  }
+  return maze;
 }
 
 const actualCard = document.querySelector(".card")
@@ -48,6 +66,6 @@ const dropZoneHearts = document.getElementById("dropHearts")
 //   console.log("drag")
 // })
 
-dropZoneClubs.addEventListener("dragenter", e => {
-  console.log("entro")
-})
+// dropZoneClubs.addEventListener("dragenter", e => {
+//   console.log("entro")
+// })
