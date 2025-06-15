@@ -15,4 +15,16 @@ body{
     height: 150px;
     width: 100px;
     border: 2px solid lightblue;
+    padding: 0;
+}
+
+img {
+    height: 146px;
+    width: 96px;
+    border-radius: 10px;
+    border: 1px inset black;
+}
+
+.absolute-card {
+    position: absolute;
 }
