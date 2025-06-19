@@ -28,3 +28,7 @@ img {
 .absolute-card {
     position: absolute;
 }
+
+.highlight-drop {
+  border: 2px dashed yellow;
+}
