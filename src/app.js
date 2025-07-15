@@ -4,19 +4,11 @@ import "./style.css";
 
 import "./assets/img/4geeks.ico";
 
-const suits = ["Treboles", "Diamantes", "Corazones", "Picas"]
-const numbers = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
 const maze = []
 const newCardMaze = []
 const playZones = []
 const mazeZone = document.querySelector("#maze")
-
-mazeZone.addEventListener("click", getNewCard)
-
-const dropZoneClubs = document.getElementById("dropClubs")
-const dropZoneSpades = document.getElementById("dropSpades")
-const dropZoneDiamond = document.getElementById("dropDiamond")
-const dropZoneHearts = document.getElementById("dropHearts")
+const finishZones = []
 
 function newGame() {
   const newGameButton = document.querySelector("#new-game-button")
@@ -34,11 +26,15 @@ function newGame() {
   placeCards()
   placeMaze()
   console.log(maze)
+  finalZones()
 }
 
 window.onload = newGame()
 
 function createMaze() {
+  const suits = ["Treboles", "Diamantes", "Corazones", "Picas"]
+  const numbers = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
+
   for(let i = 0; i < numbers.length; i++) {
     for(let j = 0; j < suits.length; j++) {
       if (suits[j] == "Diamantes" || suits[j] == "Corazones") {
@@ -70,6 +66,7 @@ function resetGame() {
   maze.length = 0
   playZones.length = 0
   newCardMaze.length = 0
+  finishZones.length = 0
 
   // Limpiar contenido visual del mazo
   mazeZone.innerHTML = ""
@@ -82,6 +79,12 @@ function resetGame() {
   for (let i = 0; i < 7; i++) {
     const col = document.querySelector(`#play-zone-${i}`)
     if (col) col.innerHTML = ""
+  }
+
+  // Limpiar zonas finales
+  for (let i = 0; i < 4; i++) {
+     const zone = document.querySelector(`#finish-zone-${i}`)
+     if (zone) zone.innerHTML = ""
   }
 }
 
@@ -194,8 +197,8 @@ function repaintColumn(colIdx) {
   colElm.innerHTML = ""
   const stack = playZones[colIdx]
   for (let i = 0; i < stack.length; i++) {
-    const c      = stack[i]
-    const isTop  = i === stack.length - 1
+    const c = stack[i]
+    const isTop = i === stack.length - 1
     if (isTop) c.flipped = false
     const el = crateCardHTML(c, colIdx, i, isTop)
     el.style.top = `${i * 30 + 2}px`
@@ -224,7 +227,6 @@ function makeZoneDroppable(zoneElement, dropColIndex) {
     let movingCards = []
     let movingTopCard = null
 
-    // Detectar si viene del mazo (solo una carta)
     const fromMaze = sourceColIndex === "maze"
 
     if (fromMaze) {
@@ -248,7 +250,7 @@ function makeZoneDroppable(zoneElement, dropColIndex) {
         movingTopCard.number === destTopCard.number - 1 &&
         movingTopCard.color !== destTopCard.color
     } else {
-      legalMove = movingTopCard.number === 13 // solo Rey en columnas vacías
+      legalMove = movingTopCard.number === 13
     }
 
     if (!legalMove) {
@@ -258,7 +260,7 @@ function makeZoneDroppable(zoneElement, dropColIndex) {
 
     // Movimiento válido, ahora aplicarlo
     if (fromMaze) {
-      // 🧼 Limpiar mazo visual
+      // Limpiar mazo visual
       document.querySelector("#new-card").innerHTML = ""
       newCardMaze.pop()
     } else {
@@ -271,4 +273,65 @@ function makeZoneDroppable(zoneElement, dropColIndex) {
     playZones[dropColIndex].push(...movingCards)
     repaintColumn(dropColIndex)
   })
+}
+
+function makeFinalZonesDroppable(zoneElement, finishIndex) {
+  zoneElement.addEventListener("dragover", (e) => {
+    e.preventDefault()
+    zoneElement.classList.add("highlight-drop")
+  })
+
+  zoneElement.addEventListener("dragleave", () => {
+    zoneElement.classList.remove("highlight-drop")
+  })
+
+  zoneElement.addEventListener("drop", (e) => {
+    e.preventDefault()
+    zoneElement.classList.remove("highlight-drop")
+
+    const parsed = JSON.parse(e.dataTransfer.getData("text/plain"))
+
+    const { card, sourceColIndex, cardIndex } = parsed
+
+    const fromMaze = sourceColIndex === "maze"
+
+    if (finishZones[finishIndex].length === 0 && card.number === 1) {
+      if (fromMaze) {
+        finishZones[finishIndex].push(card)
+        zoneElement.appendChild(crateCardHTML(card))
+        document.querySelector("#new-card").innerHTML = ""
+        newCardMaze.pop()
+      }
+      else {
+        finishZones[finishIndex].push(card)
+        console.log(finishZones)
+        zoneElement.appendChild(crateCardHTML(card))
+        playZones[sourceColIndex].pop()
+        repaintColumn(sourceColIndex)
+      }
+    }
+    else if (card.number - 1 === finishZones[finishIndex][finishZones[finishIndex].length - 1].number && card.suit === finishZones[finishIndex][0].suit) {
+      if (fromMaze) {
+        finishZones[finishIndex].push(card)
+        zoneElement.appendChild(crateCardHTML(card))
+        document.querySelector("#new-card").innerHTML = ""
+        newCardMaze.pop()
+      }
+      else {
+        finishZones[finishIndex].push(card)
+        console.log(finishZones)
+        zoneElement.appendChild(crateCardHTML(card))
+        playZones[sourceColIndex].pop()
+        repaintColumn(sourceColIndex)
+      }
+    }
+    })
+}
+
+function finalZones() {
+  for (let i = 0; i < 4; i++) {
+    const zone = document.querySelector(`#finish-zone-${i}`)
+    finishZones.push([])
+    makeFinalZonesDroppable(zone, i)
+  }
 }
