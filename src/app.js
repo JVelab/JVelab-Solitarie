@@ -5,7 +5,7 @@ import "./style.css";
 import "./assets/img/4geeks.ico";
 
 const maze = []
-const newCardMaze = []
+let newCardMaze = []
 const playZones = []
 const mazeZone = document.querySelector("#maze")
 const finishZones = []
@@ -182,13 +182,25 @@ function placeMaze() {
 function getNewCard() {
   const newCardZone = document.querySelector("#new-card")
 
-  if (newCardZone.children.length === 0 && maze.length > 0) {
+  if (maze.length > 0) {
     const newCard = maze[0]
     newCard.flipped = false
     const newCardHTML = crateCardHTML(newCard, "maze", 0)
-    mazeZone.removeChild(mazeZone.firstChild)
+    if (mazeZone.firstChild) {
+    mazeZone.removeChild(mazeZone.lastChild);
+    }
     newCardZone.appendChild(newCardHTML)
     newCardMaze.push(maze.shift())
+  }
+  else {
+    for (let i = 0; i < newCardMaze.length; i++) {
+      maze.push(newCardMaze[i])
+    }
+    maze.push(...[...newCardMaze].reverse());
+    newCardMaze.length = 0;
+    newCardZone.innerHTML = ""
+    placeMaze()
+    console.log(maze, newCardMaze)
   }
 }
 
@@ -299,12 +311,11 @@ function makeFinalZonesDroppable(zoneElement, finishIndex) {
       if (fromMaze) {
         finishZones[finishIndex].push(card)
         zoneElement.appendChild(crateCardHTML(card))
-        document.querySelector("#new-card").innerHTML = ""
+        document.querySelector("#new-card").removeChild(document.querySelector("#new-card").lastChild)
         newCardMaze.pop()
       }
       else {
         finishZones[finishIndex].push(card)
-        console.log(finishZones)
         zoneElement.appendChild(crateCardHTML(card))
         playZones[sourceColIndex].pop()
         repaintColumn(sourceColIndex)
@@ -314,7 +325,7 @@ function makeFinalZonesDroppable(zoneElement, finishIndex) {
       if (fromMaze) {
         finishZones[finishIndex].push(card)
         zoneElement.appendChild(crateCardHTML(card))
-        document.querySelector("#new-card").innerHTML = ""
+        document.querySelector("#new-card").removeChild(document.querySelector("#new-card").lastChild)
         newCardMaze.pop()
       }
       else {
