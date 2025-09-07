@@ -1,49 +1,52 @@
-<!-- hide -->
-# Hello World with Vanilla JS
+🃏 Solitaire Game
 
-> 🇪🇸 [Spanish version of this readme is available](./README.es.md).
-<!-- endhide -->
-Start coding a JS/HTML/CSS website in 30 seconds by opening this template using 4Geeks' [One-Click Coding](https://s.4geeks.com/start?repo=https://github.com/4GeeksAcademy/vanillajs-hello) or locally on your computer.
+✨ A fully playable Solitaire (Klondike) game built with pure HTML, CSS, and Vanilla JavaScript. No frameworks, no libraries — just clean and simple code.
 
-## Before you begin
+🎮 Features
 
-Install the packages by typing: `npm install`.
+✅ Classic Solitaire (Klondike) rules
+✅ Drag & Drop support for cards
+✅ Auto-move cards to foundation when possible
+✅ Smooth animations & responsive design
+✅ Restart / New Game button
 
-### How do I run my website to see live changes?  
+📂 Project Structure
+solitaire/
+│── index.html       # Main HTML file
+│── style.css        # Game styling
+│── app.js        # Game logic
+│── assets/          # Card images & icons
+│── README.md        # This file ✨
 
-Type on the command line `$ npm run start` and type localhost on the browser.
+🚀 How to Play
 
-### Where do I write my code?  
+Clone or download the repository.
 
-It depends on the language, but you have `./src/app.js`, `./src/style.css` and `./src/index.html` respectively, you can add new `.html` as you please, just make sure to import it on the `app.js`.
+Open index.html in your browser.
 
-> Note: remember that the JS workflow starts inside `window.onload`.
+Start playing Solitaire! 🃏
 
+👾 Controls
 
-## Troubleshooting
+Drag & Drop → Move cards between piles.
 
-### I don't see my changes...
+New Game button → Restart the game with a fresh deck.
 
-Everytime you change any file inside the `./src` folder the website's public URL will automatically refresh the changes (it's a process called hot deploy)
-Remember also to refresh cleaning the cache (`command+shift+r` on Mac, `control+shift+r` on PC & Linux)
+📌 Roadmap
 
-### How do I include more images in my project?
+ Add timer & score system ⏱️
 
-Add them inside the `./src/assets/img` folder and import them from any of your JS files. E.g: `import "../assets/img/rigo-baby.jpg";`
+ "Undo" last move ↩️
 
-### How do I include more JS files?
+ Different solitaire variations (Spider, FreeCell) 🕷️
 
-Just add the files into the src folder and import the file/variables into your app.js. E.g: `import myVar from "./file2.js"`
+ Mobile-friendly improvements 📱
 
-### How do I publish the website?
+🤝 Contributing
 
-We have prepared the boilerplate to be compatible with [vercel](https://vercel.com/), very easy and in just one step! 
-You can read more about [deploying on vercel here](https://4geeks.com/docs/start/deploy-vercel).
+Contributions are welcome! 🎉
+Fork the project, improve the code, and submit a PR.
 
-<!-- hide -->
-### Thank you
+📜 License
 
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) or [CyberSecurity Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/cybersecurity)
-
-You can find other templates and resources like this at the [school's GitHub page](https://github.com/4geeksacademy/).
-<!-- endhide -->
+This project is licensed under the MIT License.
