@@ -1,52 +1,52 @@
-🃏 Solitaire Game
+🃏 Juego de Solitario
 
-✨ A fully playable Solitaire (Klondike) game built with pure HTML, CSS, and Vanilla JavaScript. No frameworks, no libraries — just clean and simple code.
+✨ Un Solitario (Klondike) totalmente jugable desarrollado con HTML, CSS y JavaScript puro. Sin frameworks ni librerías externas — solo código limpio y simple.
 
-🎮 Features
+🎮 Características
 
-✅ Classic Solitaire (Klondike) rules
-✅ Drag & Drop support for cards
-✅ Auto-move cards to foundation when possible
-✅ Smooth animations & responsive design
-✅ Restart / New Game button
+✅ Reglas clásicas del Solitario (Klondike)
+✅ Soporte de arrastrar y soltar para las cartas
+✅ Movimiento automático a las fundaciones cuando es posible
+✅ Animaciones fluidas y diseño responsivo
+✅ Botón de Reiniciar / Nuevo Juego
 
-📂 Project Structure
-solitaire/
-│── index.html       # Main HTML file
-│── style.css        # Game styling
-│── app.js        # Game logic
-│── assets/          # Card images & icons
-│── README.md        # This file ✨
+📂 Estructura del proyecto
+solitario/
+│── index.html       # Archivo principal
+│── style.css        # Estilos del juego
+│── app.js        # Lógica del juego
+│── assets/          # Imágenes de cartas e íconos
+│── README.md        # Este archivo ✨
 
-🚀 How to Play
+🚀 Cómo jugar
 
-Clone or download the repository.
+Clona o descarga el repositorio.
 
-Open index.html in your browser.
+Abre index.html en tu navegador.
 
-Start playing Solitaire! 🃏
+¡Empieza a jugar al Solitario! 🃏
 
-👾 Controls
+👾 Controles
 
-Drag & Drop → Move cards between piles.
+Arrastrar y soltar → Mueve las cartas entre pilas.
 
-New Game button → Restart the game with a fresh deck.
+Botón Nuevo Juego → Reinicia la partida con una nueva baraja.
 
 📌 Roadmap
 
- Add timer & score system ⏱️
+ Añadir temporizador y sistema de puntuación ⏱️
 
- "Undo" last move ↩️
+ Función de “deshacer” último movimiento ↩️
 
- Different solitaire variations (Spider, FreeCell) 🕷️
+ Variantes de solitario (Spider, FreeCell) 🕷️
 
- Mobile-friendly improvements 📱
+ Mejoras para móviles 📱
 
-🤝 Contributing
+🤝 Contribuciones
 
-Contributions are welcome! 🎉
-Fork the project, improve the code, and submit a PR.
+¡Las contribuciones son bienvenidas! 🎉
+Haz un fork, mejora el código y envía un PR.
 
-📜 License
+📜 Licencia
 
-This project is licensed under the MIT License.
+Este proyecto está bajo la licencia MIT.
